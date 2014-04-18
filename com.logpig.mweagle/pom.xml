@@ -74,7 +74,7 @@
 						</goals>
 						<configuration>
 							<mainClass>com.logpig.mweagle.Main</mainClass>
-							<classpathScope>java</classpathScope>
+							<classpathScope>test</classpathScope>
 						</configuration>
 					</execution>
 				</executions>
