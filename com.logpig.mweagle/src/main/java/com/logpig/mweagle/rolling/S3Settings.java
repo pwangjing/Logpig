@@ -15,10 +15,11 @@
  */
 package com.logpig.mweagle.rolling;
 
-import java.util.ArrayList;
-
 import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.Region;
+
+import java.util.ArrayList;
 /**
  * POJO to store Amazon S3 settings 
  *
@@ -53,7 +54,19 @@ public class S3Settings {
 		getSettingError("bucketName", bucketName, errors);
 		getBucketNameErrors(errors);
 		getRetryValueErrors(errors);
+		if(errors.size()==0) getAuthenticationError(errors);
 		return errors;
+	}
+	public void getAuthenticationError( ArrayList<String> errors){
+		final AmazonS3Client s3Client = new AmazonS3Client(this.getAWSCredentials());
+		try{
+			boolean bucketExists=s3Client.doesBucketExist(bucketName);
+			if(bucketExists==false){
+				errors.add("Bucket Does not exists");
+			}
+		}catch (Exception e){
+			errors.add("Error when connecting to S3--" + e.getMessage());
+		}
 	}
 
 	private void getSettingError(String name, String value, ArrayList<String> errors) {

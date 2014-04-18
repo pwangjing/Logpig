@@ -15,18 +15,16 @@
  */
 package com.logpig.mweagle.aws;
 
-import java.io.File;
-import java.net.HttpURLConnection;
-import java.util.UUID;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.logpig.mweagle.rolling.S3Settings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.net.HttpURLConnection;
 
 /**
  * Runnable that puts a local file to S3
@@ -74,8 +72,7 @@ public class S3FilePutRunnable implements Runnable
 						s3Client.createBucket(this.s3Settings.bucketName, this.s3Settings.regionName);
 					}
 					final File logfile = new File(this.filePath);
-					final String keyName = UUID.randomUUID().toString();
-					final PutObjectRequest request = new PutObjectRequest(this.s3Settings.bucketName, keyName, logfile);
+					final PutObjectRequest request = new PutObjectRequest(this.s3Settings.bucketName, logfile.getName(), logfile);
 					s3Client.putObject(request);
 				}
 				else
