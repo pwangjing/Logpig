@@ -20,9 +20,9 @@ release.properties
 .DS_Store
 
 #intellj files
-*.idea/
 *.iws
 *.iml
+.idea
 workspace.xml
 tasks.xml
 
