@@ -22,6 +22,7 @@ release.properties
 #intellj files
 *.iws
 *.iml
+.iml
 .idea
 workspace.xml
 tasks.xml
