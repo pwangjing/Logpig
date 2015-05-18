@@ -28,9 +28,9 @@
     <File>./target/logs/logpig.log</File>
     
     <!--  Start S3 Settings -->
-    <accessKey>MYACCESSKEY</accessKey>
-    <secretKey>MYSECRETKEY_MYSECRETKEY</secretKey>
-	<bucketName>applogs</bucketName>
+    <accessKey>${s3_access_key}</accessKey>
+    <secretKey>${s3_secret}</secretKey>
+    <bucketName>${s3_bucket}</bucketName>
 	<!--  Optional S3 Settings 
 	<regionName></regionName>
 	<retryCount>5</retryCount>
