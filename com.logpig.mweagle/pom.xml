@@ -17,7 +17,7 @@
 	<groupId>com.logpig</groupId>
 	<artifactId>com.logpig.mweagle</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 
 	<name>Logback S3 Appender</name>
 	<url>http://lemurcatta.net</url>
@@ -26,7 +26,18 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<aws-version>1.7.6</aws-version>
 	</properties>
-
+	<distributionManagement>
+		<snapshotRepository>
+			<id>disney.ds.repo</id>
+			<name>Walt Disney Studio Technology Team Artifactory-snapshots</name>
+			<url>https://tech.studio.disney.com/artifactory/ds-snapshot-local</url>
+		</snapshotRepository>
+		<repository>
+			<id>disney.ds.repo</id>
+			<name>Walt Disney Studio Technology Team Artifactory-releases</name>
+			<url>https://tech.studio.disney.com/artifactory/ds-release-local</url>
+		</repository>
+	</distributionManagement>
 	<dependencies>
 		<!-- AWS -->
 		<dependency>
